@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     const listTodos = async () => {
-      const data = (await API.graphql<ListTodosQuery>({
+      const { data } = (await API.graphql<ListTodosQuery>({
         query: /* GraphQL */ `
           query ListTodos {
             listTodos {
@@ -22,7 +22,7 @@ export default function Home() {
             }
           }
         `,
-      })) as Promise<GraphQLResult<ListTodosQuery>>
+      })) as GraphQLResult<ListTodosQuery>
       setTodos(data?.listTodos)
     }
     listTodos()
