@@ -7,9 +7,10 @@ import type { AppProps } from 'next/app'
 
 Amplify.configure({
   ...config,
-  API: {
-    graphql_endpoint: '/api/graphql',
-  },
+  aws_appsync_graphqlEndpoint: '/api/graphql',
+  // API: {
+  //   graphql_endpoint: '/api/graphql',
+  // },
 })
 
 export default function App({ Component, pageProps }: AppProps) {
