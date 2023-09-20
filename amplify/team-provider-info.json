@@ -20,6 +20,12 @@
           "appId": "d355fqa8wxcozl",
           "type": "cicd"
         }
+      },
+      "api": {
+        "amplifyappsynccors": {}
+      },
+      "custom": {
+        "appsyncwaf": {}
       }
     }
   }
