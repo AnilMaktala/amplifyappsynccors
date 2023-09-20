@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { API } from 'aws-amplify'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import type { GraphQLResult } from '@aws-amplify/api'
 import type { ListTodosQuery } from '@/API'

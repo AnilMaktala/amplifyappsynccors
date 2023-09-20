@@ -5,7 +5,12 @@ import '@aws-amplify/ui-react/styles.css'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
-Amplify.configure(config)
+Amplify.configure({
+  ...config,
+  API: {
+    graphql_endpoint: '/api/graphql',
+  },
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
