@@ -1,9 +1,10 @@
 import * as AmplifyHelpers from '@aws-amplify/cli-extensibility-helper'
 import * as cdk from 'aws-cdk-lib'
 import * as wafv2 from 'aws-cdk-lib/aws-wafv2'
-import * as appsync from 'aws-cdk-lib/aws-appsync'
 import { Construct } from 'constructs'
 import type { AmplifyDependentResourcesAttributes } from '../../types/amplify-dependent-resources-ref'
+
+const AMPLIFY_HOSTING_URL = 'https://main.d355fqa8wxcozl.amplifyapp.com'
 
 export class cdkStack extends cdk.Stack {
   constructor(
@@ -19,7 +20,7 @@ export class cdkStack extends cdk.Stack {
       description: 'Current Amplify CLI env name',
     })
 
-    const webAcl = new wafv2.CfnWebACL(this, 'MyCDKWebAclG', {
+    const webAcl = new wafv2.CfnWebACL(this, 'MyCDKWebAcl', {
       defaultAction: {
         block: {},
       },
@@ -70,7 +71,7 @@ export class cdkStack extends cdk.Stack {
                 },
               ],
               positionalConstraint: 'EXACTLY',
-              searchString: 'https://main.d355fqa8wxcozl.amplifyapp.com',
+              searchString: AMPLIFY_HOSTING_URL,
             },
           },
           visibilityConfig: {
@@ -90,19 +91,16 @@ export class cdkStack extends cdk.Stack {
         [{ category: 'api', resourceName: 'amplifyappsynccors' }]
       )
 
-    const myAppsyncApi = appsync.GraphqlApi.fromGraphqlApiAttributes(
-      this,
-      'MyReferencedApi',
-      {
-        graphqlApiId: api.amplifyappsynccors.GraphQLAPIIdOutput,
-      }
-    )
-
     new wafv2.CfnWebACLAssociation(this, 'MyCDKWebACLAssociation', {
-      // replace this once it is fixed
-      // resourceArn: myAppsyncApi.arn,
-      resourceArn:
-        'arn:aws:appsync:us-east-1:814763596509:apis/uv4paaa6t5fodkxvzjgkcz3u6e',
+      resourceArn: cdk.Fn.join(':', [
+        'arn:aws:appsync',
+        cdk.Aws.REGION,
+        cdk.Aws.ACCOUNT_ID,
+        cdk.Fn.join('/', [
+          'apis',
+          cdk.Fn.ref(api.amplifyappsynccors.GraphQLAPIIdOutput),
+        ]),
+      ]),
       webAclArn: webAcl.attrArn,
     })
   }
