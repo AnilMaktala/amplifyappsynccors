@@ -28,5 +28,35 @@
         "appsyncwaf": {}
       }
     }
+  },
+  "stage": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyappsynccors-stage-134148-authRole",
+      "UnauthRoleArn": "arn:aws:iam::932080214319:role/amplify-amplifyappsynccors-stage-134148-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::932080214319:role/amplify-amplifyappsynccors-stage-134148-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-amplifyappsynccors-stage-134148-deployment",
+      "UnauthRoleName": "amplify-amplifyappsynccors-stage-134148-unauthRole",
+      "StackName": "amplify-amplifyappsynccors-stage-134148",
+      "StackId": "arn:aws:cloudformation:us-west-1:932080214319:stack/amplify-amplifyappsynccors-stage-134148/4f7195f0-596f-11ee-9521-0682af21476b",
+      "AmplifyAppId": "d3gi9w5l4eotbp"
+    },
+    "categories": {
+      "auth": {
+        "amplifyappsynccors2e2fa129": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3gi9w5l4eotbp",
+          "type": "cicd"
+        }
+      },
+      "api": {
+        "amplifyappsynccors": {}
+      },
+      "custom": {
+        "appsyncwaf": {}
+      }
+    }
   }
 }
