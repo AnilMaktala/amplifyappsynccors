@@ -4,7 +4,7 @@ import * as wafv2 from 'aws-cdk-lib/aws-wafv2'
 import { Construct } from 'constructs'
 import type { AmplifyDependentResourcesAttributes } from '../../types/amplify-dependent-resources-ref'
 
-const AMPLIFY_HOSTING_URL = 'https://main.d355fqa8wxcozl.amplifyapp.com'
+export const AMPLIFY_HOSTING_URL = 'https://main.d355fqa8wxcozl.amplifyapp.com'
 
 export class cdkStack extends cdk.Stack {
   constructor(
@@ -51,10 +51,19 @@ export class cdkStack extends cdk.Stack {
           },
         },
         {
-          name: 'AllowOnlyCloudfront',
+          name: 'AllowOnlyAmplifyHosting',
           priority: 1,
           action: {
-            allow: {},
+            allow: {
+              // customRequestHandling: {
+              //   insertHeaders: [
+              //     {
+              //       name: 'Access-Control-Allow-Origin',
+              //       value: AMPLIFY_HOSTING_URL,
+              //     },
+              //   ],
+              // },
+            },
           },
           statement: {
             byteMatchStatement: {
