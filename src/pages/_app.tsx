@@ -7,7 +7,7 @@ import type { AppProps } from 'next/app'
 
 Amplify.configure({
   ...config,
-  aws_appsync_graphqlEndpoint: '/api/graphql',
+  aws_appsync_graphqlEndpoint: 'https://api-west.amaktala.com/graphql',
   // API: {
   //   graphql_endpoint: '/api/graphql',
   // },

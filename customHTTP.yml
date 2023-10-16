@@ -2,6 +2,6 @@ customHeaders:
   - pattern: "/api/*"
     headers:
       - key: "Access-Control-Allow-Origin"
-        value: "https://main.d3gi9w5l4eotbp.amplifyapp.com/" # Replace with your domain
+        value: "https://www.amaktala.com" # Replace with your domain
       - key: "Access-Control-Allow-Methods"
         value: "GET,POST,OPTIONS"

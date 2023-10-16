@@ -4,8 +4,7 @@ import * as wafv2 from "aws-cdk-lib/aws-wafv2";
 import { Construct } from "constructs";
 import type { AmplifyDependentResourcesAttributes } from "../../types/amplify-dependent-resources-ref";
 
-export const AMPLIFY_HOSTING_URL =
-  "https://main.d3gi9w5l4eotbp.amplifyapp.com/";
+export const AMPLIFY_HOSTING_URL = "https://www.amaktala.com";
 
 export class cdkStack extends cdk.Stack {
   constructor(
